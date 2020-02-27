@@ -1,0 +1,130 @@
+Terente Andrei-Alexandru 325CA
+
+Contents:
+
+	>algo.h
+ 		- Prototipul functiei search().
+
+ 	>algo.cpp [1]
+ 		- Implementarea algoritmului Knuth-Morris-Pratt.
+ 		(cea mai buna solutie aleasa)
+ 		- Referinte:
+
+ 	>algo2.cpp [2]
+ 		- Implementarea algoritmului Rabin-Karp.
+
+
+ 	>algo_naive.cpp
+ 		- Implementarea solutiei naive, care a fost folosita pt a genera 
+ 		fisierele de referinta
+
+ 	>tester.cpp
+ 		- Driver Program ce testeaza corectitudinea si eficienta solutiei
+ 		alese
+
+ 	>Makefile, ce contine urmatoarele reguli:
+ 		- build_naive : compileaza executabilul care va testa solutia naiva
+ 		pe testele default
+
+ 		-build_best: compileaza executabilul care va testa cea mai buna 
+ 		solutie aleasa pe testele default
+
+ 		-build_snd_best: compileaza executabilul care va testa a doua cea mai
+ 		buna solutie aleasa pe testele default
+
+ 		-run: ruleaza testerul pe testele default
+
+ 		-clean
+
+ 	>check.sh
+ 		- trebuie sa se afle in acelasi folder cu sursele, testele,
+ 		referintele si Makefile-ul
+ 		- format folosire: ./check.sh [algo], unde [algo] poate fi:
+ 			o kmp , se va rula checkerul pe algoritmul KMP
+ 			o rk , se va rula checkerul pe algoritmul RK
+ 			o naive , se va rula checkerul pe algoritmul Naive
+
+ 		- compileaza executabilul ce va rula algoritmul specificat
+ 		- ruleaza executabilul tester pe testele default
+ 		- afiseaza corectitudinea si timpul de executie al fiecarui test
+ 		- afiseaza timpul total de executie al algoritmului pt fiecare set si
+ 		creeaza fisierul execution_times.txt ce contine aceste date
+ 	
+ 	>aux.sh
+ 		- prototipul de generator de teste folosit cu anumite modificari pt. a
+ 		genera fiecare set de teste
+ 		- genereaza un set de 15 teste(de dimensiune mica) in aux/in
+
+ 	>Folder "in" cu testele de intrare (6 seturi a cate 15 teste)
+ 		- set standard: folder: format "inID",
+ 		- set teste mari: folder: format "big_inID", unde ID reprezinta nr. setului.
+ 		-Fiecare test este numit "inputID.txt", unde ID reprezinta nr. testului.
+ 		-Fiecare test este structurat in felul urmator:
+ 			o pe prima linie, un text T de max. 2 * 10^6 caractere
+ 			o un tipar ce apartine textului T de lungime variabila
+
+ 		- Descrierea seturilor:
+ 			STANDARD - textul pt testul 0 are dimensiunea 100 caractere
+ 					 - nr_char_text(i) = 2 * nr_char_text(i - 1)
+ 					 - astfel, textul 14 are dim. 1638401 caractere
+ 					 - pt fiecare set difera alfabetul si dimensiunea
+ 					 tiparului, fiind astfel o buna modalitate de a
+ 					 testa corectitudinea
+
+
+ 			BIG - fiecare text are dimensiunea 2 * 10^6 caractere
+ 				- scopul aste de a testa in special eficienta
+
+ 			in1:
+ 				-alfabet: a-zA-Z0-9
+ 				-tipar: substring aleator
+ 			in2:
+ 				-alfabet: a-zA-Z0-9 
+ 				-tipar: substring aleator (size < 50) 
+
+ 			in3:
+ 				-alfabet: a-zA-Z0-9
+ 				-tipar: substring aleator (size < 10)
+ 			in4:
+ 				-alfabet: a-z
+ 				-tipar: substring aleator (size < 10)
+ 			in5:
+ 				-alfabet: a-z
+ 				-tipar: substring aleator (size < 4)
+ 			in6:
+ 				-alfabet: "ABC"
+ 				-tipar: substring aleator (size < 4)
+
+ 			big_in1:
+ 				-alfabet: ABC 
+ 				-tipar: substring aleator (size < 4)
+ 			big_in2:
+ 				-alfabet: AB
+ 				-tipar: substring aleator (size < 10)
+ 			ing_in3:
+ 			 	-alfabet: A
+ 				-tipar: string format din 'A' (size < 500)
+
+
+ 	>Folder "out" cu fisierele de referinta
+ 		-outID: pt setul standard
+ 		-big_outID: pt testele mari
+
+ 		-outputTEST_ID.txt, fisierul ce contine referinta pt testul TEST_ID,
+ 		din cadrul setului in care este inclus
+
+ 		-format output: sir de numere intregi, care reprezinta deplasarea fata
+ 		de indexul 0 al textului la care a fost identificate o potrivire, separate
+ 		printr-un spatiu
+
+
+
+
+Referinte:
+	[1] GeeksforGeeks. (2018). KMP Algorithm for Pattern Searching - GeeksforGe-
+eks. [online] Available at: https://www.geeksforgeeks.org/kmp-algorithm-for-
+pattern-searching/ [Accessed 30 Nov. 2018].
+	[2] GeeksforGeeks. (2018). Rabin-Karp Algorithm for Pattern Searching - Gee-
+ksforGeeks. [online] Available at: https://www.geeksforgeeks.org/rabin-karp-
+algorithm-for-pattern-searching/ [Accessed 1 Dec. 2018].
+
